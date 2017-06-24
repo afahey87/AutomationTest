@@ -16,6 +16,7 @@ namespace automatehiggins
             var driver = new ChromeDriver();
             driver.Navigate().GoToUrl("https://www.higgins3.com/");
             IWebElement element = driver.FindElement(By.Id("s"));
+            System.Threading.Thread.Sleep(2000);
             element.Click();
             element.SendKeys("Printer");
             System.Threading.Thread.Sleep(2000);
@@ -25,6 +26,10 @@ namespace automatehiggins
             element2.Click();
             System.Threading.Thread.Sleep(2000);
 
+
+            driver.Close();
+            driver.Quit();
+          
 
 
         }
