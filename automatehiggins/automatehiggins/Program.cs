@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using NUnit.Framework;
+
 
 
 namespace automatehiggins
@@ -15,11 +17,48 @@ namespace automatehiggins
         {
             var driver = new ChromeDriver();
             driver.Navigate().GoToUrl("https://www.higgins3.com/");
-            IWebElement element = driver.FindElement(By.Id("s"));
             System.Threading.Thread.Sleep(2000);
-            element.Click();
-            element.SendKeys("Printer");
+            
+
+
+            
+            //Assert try catch block to see if search box is one the page.
+            try
+            {
+                Assert.IsTrue(driver.FindElement(By.XPath("//input[@id='s']")).Displayed);
+                Console.Write("Search box display . assert Pass");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Can not find Search Box . assert Fail");
+                driver.Quit();
+            }
+            // End Assert
+            
+
+
+
+            IWebElement element1 = driver.FindElement(By.XPath("//input[@id='s']"));
             System.Threading.Thread.Sleep(2000);
+            element1.Click();
+            element1.SendKeys("Printer");
+            System.Threading.Thread.Sleep(2000);
+
+           
+
+            //Assert is button displayed.
+            try
+            {
+                Assert.IsTrue(driver.FindElement(By.Id("searchsubmit")).Displayed);
+                Console.Write("Button display assert pass");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Can not find Button . assert Fail");
+
+            }
+            // End Assert
+
 
 
             IWebElement element2 = driver.FindElement(By.Id("searchsubmit"));
@@ -32,8 +71,8 @@ namespace automatehiggins
             System.Threading.Thread.Sleep(3000);
             
       
-            driver.Close();
-            driver.Quit();
+            //driver.Close();
+            //driver.Quit();
           
 
 
