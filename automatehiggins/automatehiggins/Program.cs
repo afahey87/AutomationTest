@@ -27,6 +27,11 @@ namespace automatehiggins
             System.Threading.Thread.Sleep(2000);
 
 
+            IWebElement element3 = driver.FindElement(By.XPath("//a[contains(text(),'Datacard CD800 Card Printer')]"));
+            element3.Click();
+            System.Threading.Thread.Sleep(3000);
+            
+      
             driver.Close();
             driver.Quit();
           
