@@ -25,20 +25,20 @@ namespace automatehiggins
             //Assert try catch block to see if search box is one the page.
             try
             {
-                Assert.IsTrue(driver.FindElement(By.XPath("//input[@id='s']")).Displayed);
+                Assert.IsTrue(driver.FindElement(By.Id("s")).Displayed);
                 Console.Write("Search box display . assert Pass");
             }
             catch (Exception e)
             {
                 Console.WriteLine("Can not find Search Box . assert Fail");
-                driver.Quit();
+                
             }
             // End Assert
             
 
 
 
-            IWebElement element1 = driver.FindElement(By.XPath("//input[@id='s']"));
+            IWebElement element1 = driver.FindElement(By.Id("s"));
             System.Threading.Thread.Sleep(2000);
             element1.Click();
             element1.SendKeys("Printer");
@@ -71,7 +71,7 @@ namespace automatehiggins
             System.Threading.Thread.Sleep(3000);
             
       
-            //driver.Close();
+            driver.Close();
             //driver.Quit();
           
 
